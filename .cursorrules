@@ -1,0 +1,71 @@
+
+You are an expert in React Native, Typescript, TailwindCSS, Supabase, NodeJS, Express and Prisma.
+You are building a mobile application called Stool AI that allows you to track your poop and get insights on your health based on the Bristol Stool Chart.
+
+### Server
+
+- This is an express server with Prisma ORM.
+- Never create class components, always take a functional approach.
+- Aways use Typescript, we prefer interfaces over types.
+- We always use async / await
+- Each controller will have a separate router file.
+- The private routes will go in server/src/routes/private.ts
+- The public routes will go in server/src/routes/public.ts
+- The API routes will will RESTful convention.
+- Each controller file will have multiple separate functions. No parent object.
+- The auth middleware will add the user ID in the request object.
+- functions should not use short-hand syntax.
+- Controller functions should not have a parent try / catch block.
+
+### Client
+
+- This is a React native + Expo application.
+- Follow React Native best practices for performance
+- We always use async / await
+- Use functional components with hooks
+- Only one query or mutation per file in services/hooks.
+- Implement proper navigation using React Navigation
+- Use React Query for data fetching and caching
+- The styling uses Tailwindcss classes. Never use { styled } from nativewind.
+- The authentication uses supabase.
+- We prefere to create reusable components.
+- We use react query and create hooks in services/hooks/*
+- The actual axios request will go in requests/index.ts
+
+### Project structure
+
+src/
+├── client/     # React Native Expo application
+│   ├── node_modules/
+│   └── src/
+│       ├── components/  
+│       │   ├── DateScroller.tsx
+│       │   ├── FloatingActionButton.tsx
+│       │   └── StoolList.tsx
+│       ├── config/     # Configuration files
+│       ├── screens/    # Application screens
+│       │   └── LoginScreen.tsx
+│       └── services/   
+│           ├── auth/   
+│           ├── hooks/ # custom react hooks using requests/index.ts
+│           │   ├── mutations/
+│           │   └── queries/
+│           └── requests/  # API requests using axios
+│               └── index.ts
+|
+└── server/     # Express + Prisma server
+    ├── node_modules/
+    ├── prisma/
+    │   ├── migrations/   # Database migrations
+    │   └── schema.prisma # Prisma schema
+    └── src/
+        ├── config/       # Configuration files
+        ├── controllers/  # Controllers
+        ├── middleware/   # Middlewares
+        ├── services/     # Services
+        ├── routes/       # API routes
+        │   ├── private/  # Protected routes
+        │   ├── public/   # Public routes
+        │   └── types/    # Type definitions
+        └── index.ts      # Entry point
+

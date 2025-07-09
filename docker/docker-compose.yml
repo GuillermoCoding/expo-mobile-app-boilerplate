@@ -1,0 +1,13 @@
+version: '3.7'
+services:
+  nourish-db:
+    image: postgres:14.1-alpine
+    restart: always
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_USERNAME: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: ai_db
+    volumes:
+      - ./ai-pgdata:/var/lib/postgresql/data

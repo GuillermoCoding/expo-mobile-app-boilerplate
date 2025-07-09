@@ -1,0 +1,14 @@
+# .prettierignore
+
+**/node_modules/**
+**/build/**
+**/dist/**
+**/.git/**
+**/public/**
+
+# Don't ignore public router files
+!server/src/routes/public/**
+
+
+client/ios
+client/android

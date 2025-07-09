@@ -1,0 +1,27 @@
+// https://github.com/microsoft/TypeScript/wiki/Node-Target-Mapping
+
+{
+  "ts-node": {
+    "require": ["tsconfig-paths/register"]
+  },
+  "compilerOptions": {
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "outDir": "dist",
+    "sourceMap": true,
+    "strict": true,
+    "lib": ["dom", "ES2023"],
+    "module": "commonjs",
+    "target": "ES2022",
+    "noUncheckedIndexedAccess": true,
+    "inlineSources": true,
+    "sourceRoot": "/",
+    "baseUrl": "src",
+    "paths": {
+      "@/*": ["./*"]
+    },
+  },
+  "include": ["src", "test"],
+  "exclude": ["node_modules/*", "server/src/web-build/*", "server/src/client/*"],
+}

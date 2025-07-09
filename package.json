@@ -1,0 +1,22 @@
+{
+  "name": "stool-ai",
+  "version": "1.0.0",
+  "description": "Stool AI is a mobile application that allows you to track your poop and get insights on your health.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "eslint": "^8.35.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-import-resolver-typescript": "^3.6.3",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-no-relative-import-paths": "^1.5.5",
+    "prettier": "^3.4.2"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^8.18.2"
+  }
+}

@@ -1,0 +1,101 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum BristolStoolType {
+  TYPE_1
+  TYPE_2
+  TYPE_3
+  TYPE_4
+  TYPE_5
+  TYPE_6
+  TYPE_7
+}
+
+enum StoolColor {
+  BROWN
+  DARK_BROWN
+  LIGHT_BROWN
+  YELLOW
+  GREEN
+  BLACK
+  RED
+  GRAY
+  WHITE
+}
+
+model User {
+  id           Int           @id @default(autoincrement())
+  supabaseId   String?       @unique @map("supabase_id")
+  email        String        @unique
+  name         String?
+  createdAt    DateTime      @default(now()) @map("created_at")
+  updatedAt    DateTime      @updatedAt @map("updated_at") @default(now())
+  stoolRecords StoolRecord[]
+  streaks      Streak[]
+}
+
+model BristolStoolCategory {
+  id          Int              @id @default(autoincrement())
+  type        BristolStoolType @unique
+  key         String           @unique
+  color       StoolColor       
+  description String           
+  createdAt   DateTime         @default(now()) @map("created_at")
+  updatedAt   DateTime         @updatedAt @map("updated_at") @default(now())
+  records     StoolRecord[]
+}
+
+model StoolRecord {
+  id                Int                   @id @default(autoincrement())
+  imageUrl         String                @map("image_url")
+  description      String?               
+  notes            String?
+  recommendations  String?
+  createdAt        DateTime              @default(now()) @map("created_at")
+  updatedAt        DateTime              @updatedAt @map("updated_at") @default(now())
+  
+  bristolCategoryId Int?                  @map("bristol_category_id")
+  bristolCategory   BristolStoolCategory? @relation(fields: [bristolCategoryId], references: [id])
+
+  userId           Int                   @map("user_id")
+  user             User                  @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+  @@index([bristolCategoryId])
+}
+
+model Streak {
+  id            Int         @id @default(autoincrement())
+  userId        Int         @map("user_id")
+  user          User        @relation(fields: [userId], references: [id])
+  currentStreak Int         @default(0) @map("current_streak")
+  longestStreak Int         @default(0) @map("longest_streak")
+  lastRecordDate DateTime   @map("last_record_date")
+  createdAt     DateTime    @default(now()) @map("created_at")
+  updatedAt     DateTime    @updatedAt @map("updated_at") @default(now())
+  streakDays    StreakDay[]
+
+  @@index([userId])
+}
+
+model StreakDay {
+  id        Int      @id @default(autoincrement())
+  date      DateTime
+  streakId  Int      @map("streak_id")
+  streak    Streak   @relation(fields: [streakId], references: [id])
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at") @default(now())
+
+  @@unique([streakId, date])
+  @@index([streakId])
+  @@index([date])
+}

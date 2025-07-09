@@ -1,0 +1,17 @@
+{
+  "workbench.colorCustomizations": {
+    "editorCursor.foreground": "#ffffffa7"
+  },
+  "eslint.codeActionsOnSave.rules": null,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "eslint.workingDirectories": [
+    {
+      "mode": "auto"
+    }
+  ],
+  "typescript.preferences.importModuleSpecifier": "non-relative",
+  "javascript.preferences.importModuleSpecifier": "non-relative",
+  "prisma.fileWatcher": false,
+}
