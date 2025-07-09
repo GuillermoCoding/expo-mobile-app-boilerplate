@@ -1,6 +1,6 @@
-# Stool AI Application
+# Boilerplate set up for expo mobile apps with express server
 
-Stool AI is a mobile application that allows you to track your poop and get insights on your health.
+Kickstart your expo mobile app with express server app
 
 ## Prerequisites
 
